@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reg-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: reg-app
+  template:
+    metadata:
+      labels:
+        app: reg-app
+    spec:
+      containers:
+        - name: reg-app
+          image: velkaandhan/register-app:1.0.0-3
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
